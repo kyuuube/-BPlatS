@@ -1,0 +1,56 @@
+@import "./color.less";
+
+.ant-table {
+  td > a {
+    display: inline-block;
+  }
+}
+// antd ui 覆盖样式
+@media (max-width: 480px) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > th,
+  .ant-table-thead > tr > td,
+  .ant-table-tbody > tr > td {
+    white-space: pre;
+  }
+  .ant-table-thead > tr > th > span,
+  .ant-table-tbody > tr > th > span,
+  .ant-table-thead > tr > td > span,
+  .ant-table-tbody > tr > td > span {
+    display: block;
+  }
+}
+
+@media (max-width: 575px) {
+  .ant-form-item-label,
+  .ant-form-item-control-wrapper {
+    display: block;
+    width: 100%;
+  }
+  .ant-form-item-label {
+    display: block;
+    margin: 0;
+    padding: 0 0 8px;
+    line-height: 1.5;
+    white-space: initial;
+    text-align: left;
+  }
+  .ant-form-item-label label::after {
+    display: none;
+  }
+  .ant-col-xs-24.ant-form-item-label {
+    display: block;
+    margin: 0;
+    padding: 0 0 8px;
+    line-height: 1.5;
+    white-space: initial;
+    text-align: left;
+  }
+  .ant-col-xs-24.ant-form-item-label label::after {
+    display: none;
+  }
+}

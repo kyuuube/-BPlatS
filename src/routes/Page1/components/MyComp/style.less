@@ -1,0 +1,26 @@
+.SpinModal {
+  text-align: center;
+  white-space: nowrap;
+  .ant-modal-content{
+    background-color: transparent;
+    box-shadow: initial;
+    .ant-spin-spinning{
+      display:block;
+    }
+  }
+}
+
+.SpinModal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 0;
+}
+
+.SpinModal .ant-modal {
+  display: inline-block;
+  vertical-align: middle;
+  top: 0;
+  text-align: left;
+}

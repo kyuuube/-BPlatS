@@ -1,9 +1,9 @@
 import { observable, computed, observe, action, transaction, toJS } from "mobx";
-// import history from "routes/history";
-// import * as UserService from "services/UserService";
+import history from "routes/history";
+import * as UserService from "services/UserService";
 import { persist } from "mobx-persist";
 import { message } from "antd";
-// import rightStore from "./rightStore";
+import rightStore from "./rightStore";
 // const message = {};
 
 const initialData = {
@@ -38,16 +38,93 @@ class UserStore {
     init = async () => {
         if (this.logined) {
             try {
-                console.log('kira~!')
-                // await this.loginSuccess(this.token);
+                await this.loginSuccess(this.token);
             } catch (error) {
-                console.log('kira~')
-                // this.logoutSuccess();
+                this.logoutSuccess();
                 return;
             }
         }
     };
 
+    /** 获取用户资料 */
+    @action
+    getUserData = async () => {
+        const data: any = await UserService.getUserDetailData();
+        this.data = data;
+    };
+
+    /** 账号密码登录 */
+    @action
+    login = async (username: string, password: string, imageCodeId: string, imageCode: string) => {
+        try {
+            // const { token } = await UserService.login(username, password, imageCodeId, imageCode);
+            // await this.loginSuccess(token);
+            // message.destroy();
+            history.replace("/");
+            message.success("登录成功");
+        } catch (error) {
+            message.destroy();
+            message.error(error.message);
+        }
+    };
+
+    /** 手机验证码登录 */
+    @action
+    loginByPhoneCode = async (phone: string, phoneCode: string) => {
+        try {
+            const { token } = await UserService.loginByPhoneCode(phone, phoneCode);
+            await this.loginSuccess(token);
+            message.destroy();
+            history.replace("/");
+            message.success("登录成功");
+        } catch (error) {
+            message.destroy();
+            message.error(error.message);
+        }
+    };
+
+    /** 登录成功 */
+    @action
+    logout = async () => {
+        try {
+            await UserService.logout();
+            this.logoutSuccess();
+        } catch (error) {
+            this.logoutSuccess();
+        }
+        message.success("退出成功");
+    };
+
+    /** 登录成功 */
+    @action
+    loginSuccess = async (token: string) => {
+        this.logined = true;
+        this.token = token;
+        await this.getUserData();
+        await rightStore.init();
+    };
+
+    /** 注销成功 */
+    @action
+    logoutSuccess = () => {
+        this.logined = false;
+        this.token = "";
+        this.data = initialData;
+        history.replace("/login");
+    };
+
+    /** 注册账号 */
+    @action
+    regis = async (username: string, password: string) => {
+        try {
+            await UserService.regis(username, password);
+            message.success("注册成功");
+            history.replace("/login");
+        } catch (error) {
+            message.destroy();
+            message.error(error.message);
+        }
+    };
 }
 
 const userStore = new UserStore();

@@ -1,0 +1,100 @@
+@import "~styles/color.less";
+@import "~antd/es/style/themes/default.less";
+
+.Platform {
+  min-height: 100vh;
+  > .header {
+    color: #fff;
+    padding: 0;
+    .logo {
+      width: 120px;
+      height: 31px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 16px 28px 16px 28px;
+      float: left;
+    }
+    .trigger {
+      font-size: 18px;
+      line-height: 64px;
+      padding: 0 24px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .header-right {
+      float: right;
+      > span {
+        display: inline-block;
+        height: 100%;
+        padding: 0 12px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+    }
+    .UserBox {
+      padding: 0 12px;
+      span {
+        margin-left: 10px;
+      }
+    }
+    .LanguageBox {
+      padding: 0 12px;
+    }
+  }
+}
+
+.menuDrawer {
+  .ant-drawer-body {
+    padding: 0;
+    background: #001529;
+  }
+  .logo {
+    width: 120px;
+    height: 31px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px 28px 16px 28px;
+    float: left;
+  }
+  .platform-menu {
+    min-height: 100vh;
+  }
+}
+
+.header-dropdown {
+  &.ant-popover-placement-bottomRight {
+    padding-top: 0;
+  }
+  .ant-popover-arrow {
+    display: none;
+  }
+  .ant-popover-inner-content {
+    padding: 0;
+  }
+  .header-dropdown-menu {
+    border-right: 0;
+    min-width: 160px;
+    .ant-menu-item {
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Platform {
+    > .header {
+      .logo {
+        width: 31px;
+        padding: 0 0 0 24px;
+        margin-right: 0;
+      }
+      .header-right {
+        padding-right: 20px;
+      }
+      .UserBox {
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}

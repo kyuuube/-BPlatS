@@ -1,0 +1,57 @@
+.swap-enter {
+  opacity: 0.01;
+  transform: translateX(7em);
+  transition: all 0.5s ease-in;
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+.swap-enter.swap-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.swap-leave {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.5s ease-in;
+}
+
+.swap-leave.swap-leave-active {
+  opacity: 0;
+  transform: translateX(-7em);
+}
+
+.example-enter {
+  opacity: 0.01;
+  transition: opacity 0.5s ease-in;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+}
+
+.example-leave {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0;
+}
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
+.rootContainer {
+  height: 100%;
+  min-height: 100%;
+}
