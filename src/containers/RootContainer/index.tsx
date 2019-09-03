@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./style.less";
 import { withRouter, RouteComponentProps } from "react-router";
-import userStore from "stores/userStore";
+// import userStore from "stores/userStore";
 
 // Type whatever you expect in 'this.props.match.params.*'
 type PathParamsType = {
