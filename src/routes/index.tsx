@@ -27,5 +27,7 @@ const router = (
   </Router>
 );
 
+// @ts-ignore
 const App = () => router;
+// @ts-ignore
 export default hot(module)(App);

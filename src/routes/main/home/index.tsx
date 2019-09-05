@@ -50,7 +50,7 @@ export default class home extends Component<Props, State> {
                         </Breadcrumb>
                         <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>Bill is a cat.</div>
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                    <Footer style={{ textAlign: 'center' }}>Ant Design ©2019 Created by Ant UED</Footer>
                 </Layout>
             </Layout>
         );
