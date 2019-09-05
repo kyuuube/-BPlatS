@@ -10,7 +10,7 @@ interface State {
     collapsed: boolean;
 }
 
-export default class home extends Component<Props, State> {
+export default class LayoutHeader extends Component<Props, State> {
 
     constructor(props: Props) {
         super(props);

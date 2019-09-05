@@ -39,7 +39,8 @@
     "react-transition-group": "^4.2.2",
     "react-zmage": "^0.8.4",
     "typescript": "3.5.3",
-    "web-storage-cache": "^1.1.0"
+    "web-storage-cache": "^1.1.0",
+    "@hot-loader/react-dom": "^16.8.6"
   },
   "scripts": {
     "start": "react-app-rewired start",

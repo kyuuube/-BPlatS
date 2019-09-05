@@ -1,5 +1,8 @@
-const {override, fixBabelImports, addLessLoader, addDecoratorsLegacy, disableEsLint} = require('customize-cra');
+const {override, fixBabelImports, addLessLoader, addDecoratorsLegacy, disableEsLint, addWebpackAlias} = require('customize-cra');
 module.exports = override(
+    addWebpackAlias({
+        'react-dom': '@hot-loader/react-dom'
+    }),
     addDecoratorsLegacy(),
     disableEsLint(),
     fixBabelImports('import', {
