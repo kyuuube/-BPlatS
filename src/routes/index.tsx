@@ -4,8 +4,7 @@
  * @desc 正常加载 import Home from "./Home";
  */
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-// import history from "./history";
+import {BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import AsynLoadable from "../components/AsynLoadable";
 import RootContainer from "../containers/RootContainer";
 // import AuthRoute from "./AuthRoute";
@@ -18,7 +17,7 @@ const router = (
   <Router>
     <RootContainer>
       <Switch>
-        <Route path="/Home" exact component={Home} />
+        <Route path="/" component={Home} />
         {/*<Route path="/Page1/:id" exact component={Page1} />*/}
         {/*<Route path="/404" exact component={Nothing} />*/}
         <Redirect path="*" to="/" />
@@ -27,7 +26,5 @@ const router = (
   </Router>
 );
 
-// @ts-ignore
 const App = () => router;
-// @ts-ignore
 export default hot(module)(App);

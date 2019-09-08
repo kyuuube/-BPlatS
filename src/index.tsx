@@ -25,7 +25,6 @@ const render = (Component: JSX.Element) => {
 
 const hydrate = create();
 const hydrateSuccess = async () => {
-    console.log("Store同步成功");
     // await userStore.init();
     render(
         <ConfigProvider locale={zh_CN}>
