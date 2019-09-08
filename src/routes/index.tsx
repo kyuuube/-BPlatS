@@ -18,7 +18,6 @@ const router = (
     <RootContainer>
       <Switch>
         <Route path="/" component={Home} />
-        {/*<Route path="/Page1/:id" exact component={Page1} />*/}
         {/*<Route path="/404" exact component={Nothing} />*/}
         <Redirect path="*" to="/" />
       </Switch>
