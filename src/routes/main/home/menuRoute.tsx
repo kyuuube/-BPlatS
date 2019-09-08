@@ -1,5 +1,6 @@
 import React from "react";
-import AsynLoadable from "components/AsynLoadable";
+// 不使用这个组件的话，视图更新一点问题都没有
+// import AsynLoadable from "components/AsynLoadable";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import Dashboard from "routes/main/dashboard";
