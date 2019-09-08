@@ -45,7 +45,7 @@ export default class home extends Component<Props, State> {
                 </Sider>
                 <Layout>
                     <LayoutHeaderBaseAntd></LayoutHeaderBaseAntd>
-                    <Content style={{ margin: '0 16px' }}>
+                    <Content className="content-layout">
                         <MenuRoute />
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>QB  ©2019</Footer>
