@@ -1,13 +1,14 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import {RouteComponentProps} from "react-router";
-import { Breadcrumb, Skeleton, Row, Col, Avatar, Typography } from 'antd';
-import G2 from '@antv/g2';
+import {Breadcrumb, Skeleton, Row, Col, Avatar, Typography} from 'antd';
+import Line from "./line"
 
-const { Title, Text } = Typography;
+const {Title, Text} = Typography;
 import "./index.less"
-import {userInfo} from "os";
 
-interface Props  extends RouteComponentProps {}
+interface Props extends RouteComponentProps {
+}
+
 interface State {
     loading: boolean
 }
@@ -19,19 +20,6 @@ export default class Dashboard extends Component<Props, State> {
 
     componentDidMount() {
         this.fakeLoading()
-        const chart = new G2.Chart({
-            container: 'c1',
-            width: 600,
-            height: 300,
-            data: [
-                { x: 'a', y: 1 },
-                { x: 'b', y: 2 },
-            ]
-        });
-
-        chart.line().position('x*y');
-
-        chart.render();
     }
 
     fakeLoading() {
@@ -39,6 +27,7 @@ export default class Dashboard extends Component<Props, State> {
             this.setState({loading: false})
         }, 5000)
     }
+
     render() {
         return (
             <div className="dashboard">
@@ -52,9 +41,9 @@ export default class Dashboard extends Component<Props, State> {
                         </Breadcrumb.Item>
                     </Breadcrumb>
                     <div className="user-info">
-                        <Skeleton loading={this.state.loading} avatar active paragraph={{ rows: 4 }} >
+                        <Skeleton loading={this.state.loading} avatar active paragraph={{rows: 2}}>
                             <Row type="flex">
-                                <Avatar size={70} src="https://i.loli.net/2019/09/14/yXAVUtHlu6oOjFk.jpg" />
+                                <Avatar size={70} src="https://i.loli.net/2019/09/14/yXAVUtHlu6oOjFk.jpg"/>
                                 <div className="user-info-left">
                                     <Title className="user-info-left-title" level={4}>早安，傻鸭。我什么也不知道。</Title>
                                     <Text type="secondary">这是个新挖的坑，慢慢填坑中</Text>
@@ -62,14 +51,29 @@ export default class Dashboard extends Component<Props, State> {
                             </Row>
                         </Skeleton>
                     </div>
+                </div>
 
-                    <div id="c1">
-
-                    </div>
+                <div className="dashboard-main">
+                    <Row gutter={20}>
+                        <Col span={12}>
+                            <div className="graph">
+                                <Skeleton  loading={this.state.loading} avatar active paragraph={{rows: 6}}>
+                                    <Line loading={this.state.loading}/>
+                                </Skeleton>
+                            </div>
+                        </Col>
+                        <Col span={12}>
+                            <div className="graph">
+                                <Skeleton  loading={this.state.loading} avatar active paragraph={{rows: 6}}>
+                                    <Line loading={this.state.loading}/>
+                                </Skeleton>
+                            </div>
+                        </Col>
+                    </Row>
                 </div>
             </div>
 
-        )
+        );
     }
 }
 
