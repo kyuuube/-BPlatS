@@ -8,6 +8,12 @@ export interface MenuItem {
 
 const defaultMenuList:MenuItem[] = [
     {
+        id: 0,
+        name: "工作台",
+        route: "/",
+        icon: "dashboard"
+    },
+    {
         id: 1,
         name: "用户管理",
         route: "/user",
@@ -16,7 +22,8 @@ const defaultMenuList:MenuItem[] = [
             {
                 id: 101,
                 name: "用户列表",
-                route: "/user/list"
+                route: "/user/list",
+                icon: "team"
             }
         ]
     },
@@ -24,7 +31,21 @@ const defaultMenuList:MenuItem[] = [
         id: 2,
         name: "系统管理",
         route: "/system",
-        icon: "system"
+        icon: "setting",
+        children: [
+            {
+                id: 201,
+                name: "权限管理",
+                route: "/system/permission",
+                icon: "lock"
+            },
+            {
+                id: 202,
+                name: "角色管理",
+                route: "/system/role",
+                icon: "flag"
+            }
+        ]
     }
 ]
 

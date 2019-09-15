@@ -19,7 +19,6 @@ export default class RootContainer extends Component<Props, State> {
     // console.log(this.props.match.params.param1)
     const { location } = this.props;
     const pathname = this.props.location!.pathname;
-    console.log("location", location);
     return this.props.children;
     // return (
     //   <TransitionGroup>
