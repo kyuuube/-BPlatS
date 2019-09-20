@@ -2,7 +2,10 @@ import {Form, Icon, Input, Button, Checkbox} from 'antd';
 import {RouteComponentProps} from "react-router";
 import { FormComponentProps } from "antd/es/form";
 import React, {Component} from "react";
+import userStore from "stores/userStore";
 
+import "./index.less"
+import history from "../history";
 
 interface Props extends RouteComponentProps, FormComponentProps {}
 
@@ -17,6 +20,12 @@ class Login extends Component<Props, State> {
             }
         });
     };
+
+    submit = () => {
+        this.props.form.validateFields(async (err, values) => {
+             await userStore.login(values.username, values.password)
+        })
+    }
 
     render() {
         const {getFieldDecorator} = this.props.form;
@@ -51,7 +60,8 @@ class Login extends Component<Props, State> {
                     <a className="login-form-forgot" href="">
                         Forgot password
                     </a>
-                    <Button type="primary" htmlType="submit" className="login-form-button">
+                    <br/>
+                    <Button type="primary" htmlType="submit" className="login-form-button" onClick={this.submit}>
                         Log in
                     </Button>
                     Or <a href="">register now!</a>
@@ -62,5 +72,3 @@ class Login extends Component<Props, State> {
 }
 
 export default Form.create<Props>()(Login);
-
-// const WrappedNormalLoginForm = Form.create({name: 'normal_login'})(NormalLoginForm);

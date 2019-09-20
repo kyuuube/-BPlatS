@@ -1,6 +1,6 @@
 import { observable, computed, observe, action, transaction, toJS } from "mobx";
 import history from "routes/history";
-import * as UserService from "services/UserService";
+import * as UserService from "services/userService";
 import { persist } from "mobx-persist";
 import { message } from "antd";
 
@@ -46,10 +46,10 @@ class UserStore {
 
     /** 账号密码登录 */
     @action
-    login = async (username: string, password: string, imageCodeId: string, imageCode: string) => {
+    login = async (username: string, password: string) => {
         try {
-            const { token } = await UserService.login({username, password, imageCodeId, imageCode}).catch(e => e);
-            await this.loginSuccess(token);
+            const { data } = await UserService.login({username, password});
+            await this.loginSuccess(data.token);
             message.destroy();
             history.replace("/");
             message.success("登录成功");

@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Redirect, Route, RouteProps } from "react-router-dom";
-// import userStore from "stores/userStore";
+import userStore from "stores/userStore";
 import { observer } from "mobx-react";
 
 interface State {
-    logined: boolean
 }
 
 /**
@@ -12,12 +11,9 @@ interface State {
  */
 @observer
 export default class AuthRoute extends Component<RouteProps, State> {
-    state: State = {
-        logined: true,
-    };
     render() {
-        console.log(!this.state.logined)
-        if (!this.state.logined) {
+        console.log(userStore.logined)
+        if (!userStore.logined) {
             return <Redirect path="*" to="/login" />;
         }
         return <Route {...this.props} />;

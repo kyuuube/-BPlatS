@@ -13,7 +13,7 @@ const getAxiosInstance = (): AxiosInstance => {
         params: {
             // 此处注意，你的`params`应该是个对象，不能是其他数据类型
             ...(config.params || {}),
-            _: +new Date()
+            // _: +new Date()
         }
     }));
 
