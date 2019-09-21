@@ -1,7 +1,7 @@
 import { observable, computed, observe, action, transaction, toJS } from "mobx";
 import history from "routes/history";
 import * as UserService from "services/userService";
-import { persist } from "mobx-persist";
+import {create, persist} from "mobx-persist";
 import { message } from "antd";
 
 const initialData = {
@@ -24,7 +24,6 @@ const initialData = {
 };
 
 class UserStore {
-    constructor() {}
     @persist @observable token = "";
     /** 是否已登录 */
     @persist @observable logined = false;
@@ -34,6 +33,7 @@ class UserStore {
     /** 初始化 */
     @action
     init = async () => {
+        console.log(this.logined)
         if (this.logined) {
             try {
                 await this.loginSuccess(this.token);
@@ -51,7 +51,7 @@ class UserStore {
             const { data } = await UserService.login({username, password});
             await this.loginSuccess(data.token);
             message.destroy();
-            history.replace("/");
+            history.push("/");
             message.success("登录成功");
         } catch (error) {
             message.destroy();
@@ -78,6 +78,23 @@ class UserStore {
     };
 }
 
-const userStore = new UserStore();
+class Fake {
+    @persist @observable token = "";
+    /** 是否已登录 */
+    @persist @observable logined = false;
+    /**用户资料 */
+    @persist("object") @observable data = initialData;
+}
 
+const hydrate = create({
+    storage: localStorage,   // or AsyncStorage in react-native.
+                            // default: localStorage
+    jsonify: false  // if you use AsyncStorage, here shoud be true
+                    // default: true
+})
+
+const userStore = new UserStore();
+const fake = new Fake();
+hydrate('fake', fake)
 export default userStore;
+

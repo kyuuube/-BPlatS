@@ -5,7 +5,6 @@ import React, {Component} from "react";
 import userStore from "stores/userStore";
 
 import "./index.less"
-import history from "../history";
 
 interface Props extends RouteComponentProps, FormComponentProps {}
 
