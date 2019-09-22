@@ -21,7 +21,6 @@ export default class Line extends Component<Props, State> {
 
     componentWillMount() {
         const uuid = uuidv1()
-        console.log(this.props.loading)
         this.setState({id: uuid})
     }
 

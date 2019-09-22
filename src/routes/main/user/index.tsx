@@ -44,7 +44,6 @@ class User extends Component<Props, State> {
 
     render() {
         const { form } = this.props;
-        console.log(this.props)
         const { getFieldDecorator } = form;
         return (
             <div className="user">

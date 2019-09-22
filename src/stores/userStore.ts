@@ -33,7 +33,6 @@ class UserStore {
     /** 初始化 */
     @action
     init = async () => {
-        console.log(this.logined)
         if (this.logined) {
             try {
                 await this.loginSuccess(this.token);
@@ -78,23 +77,7 @@ class UserStore {
     };
 }
 
-class Fake {
-    @persist @observable token = "";
-    /** 是否已登录 */
-    @persist @observable logined = false;
-    /**用户资料 */
-    @persist("object") @observable data = initialData;
-}
-
-const hydrate = create({
-    storage: localStorage,   // or AsyncStorage in react-native.
-                            // default: localStorage
-    jsonify: false  // if you use AsyncStorage, here shoud be true
-                    // default: true
-})
 
 const userStore = new UserStore();
-const fake = new Fake();
-hydrate('fake', fake)
 export default userStore;
 

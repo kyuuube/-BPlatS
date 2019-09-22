@@ -16,7 +16,7 @@ const Login = AsynLoadable(() => import(/* webpackChunkName: "home" */ "./login"
 
 
 const router = (
-    <Router history={history}>
+    <Router history={history} >
         <RootContainer>
             <Switch>
                 <Route path="/login" exact component={Login}/>
