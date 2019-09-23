@@ -13,6 +13,7 @@ import history from "./history"
 
 const Home = AsynLoadable(() => import(/* webpackChunkName: "home" */ "./main/home"));
 const Login = AsynLoadable(() => import(/* webpackChunkName: "home" */ "./login"));
+const signUp = AsynLoadable(() => import(/* webpackChunkName: "home" */ "./signUp"));
 
 
 const router = (
@@ -20,6 +21,7 @@ const router = (
         <RootContainer>
             <Switch>
                 <Route path="/login" exact component={Login}/>
+                <Route path="/signup" exact component={signUp}/>
                 <AuthRoute path="/" component={Home}/>
                 <Redirect path="*" to="/"/>
             </Switch>
@@ -27,7 +29,5 @@ const router = (
     </Router>
 );
 
-// @ts-ignore
 const App = () => router;
-// @ts-ignore
 export default hot(module)(App);

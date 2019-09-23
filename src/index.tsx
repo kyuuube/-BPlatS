@@ -4,12 +4,12 @@ import './index.css';
 import App from './routes';
 import * as serviceWorker from './serviceWorker';
 import userStore from "stores/userStore";
-import { create } from "mobx-persist";
+import {create} from "mobx-persist";
 // import wsCache from "utils/wsCache";
 import globalEvents from "utils/globalEvents";
 // antd组件本地化
 import zh_CN from "antd/lib/locale-provider/zh_CN";
-import { ConfigProvider } from "antd";
+import {ConfigProvider} from "antd";
 
 // 日期本地化设置
 import moment from "moment";
@@ -27,7 +27,7 @@ const render = () => {
     // });
     ReactDOM.render(
         <ConfigProvider locale={zh_CN}>
-            <App />
+            <App/>
         </ConfigProvider>,
         MOUNT_NODE
     );

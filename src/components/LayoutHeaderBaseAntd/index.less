@@ -1,3 +1,11 @@
+@import '~antd/es/style/themes/default.less';
+
+@global-header-prefix-cls: ~'@{ant-prefix}-pro-global-header ';
+
+@pro-header-bg: @component-background;
+@pro-header-hover-bg: @component-background;
+@pro-header-box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
 .header-layout {
   //text-align: right;
   font-size: 20px;
@@ -7,17 +15,58 @@
     font-size: 20px;
     cursor: pointer;
   }
+  //.header-layout-right {
+  //  text-align: right;
+  //  .header-layout-avatar{
+  //    vertical-align: text-top;
+  //    cursor: pointer;
+  //    background-color: rgb(144, 160, 185);
+  //  }
+  //  .header-layout-global {
+  //    margin-left: 30px;
+  //    cursor: pointer;
+  //    font-size: 19px;
+  //  }
+  //}
+
   .header-layout-right {
+    font-size: 14px;
+    float: right;
+    height: 100%;
+    overflow: hidden;
     text-align: right;
-    .header-layout-avatar{
-      vertical-align: text-top;
+    .action {
+      display: inline-block;
+      height: 100%;
+      padding: 0 12px;
       cursor: pointer;
-      background-color: rgb(144, 160, 185);
+      transition: all 0.3s;
+      > i {
+        color: @text-color;
+        vertical-align: middle;
+      }
+      &:hover {
+        background: @pro-header-hover-bg;
+      }
+      &:global(.opened) {
+        background: @pro-header-hover-bg;
+      }
     }
-    .header-layout-global {
-      margin-left: 30px;
-      cursor: pointer;
-      font-size: 19px;
+    .search {
+      padding: 0 12px;
+      &:hover {
+        background: transparent;
+      }
+    }
+    .account {
+      .avatar {
+        margin: ~'calc((@{layout-header-height} - 24px) / 2)' 0;
+        margin-right: 8px;
+        color: @primary-color;
+        vertical-align: top;
+        background: rgba(255, 255, 255, 0.85);
+      }
     }
   }
+
 }

@@ -1,16 +1,17 @@
 import {Form, Icon, Input, Button, Checkbox} from 'antd';
 import {RouteComponentProps} from "react-router";
-import { FormComponentProps } from "antd/es/form";
+import {FormComponentProps} from "antd/es/form";
 import React, {Component} from "react";
-import userStore from "stores/userStore";
 
 import "./index.less"
 
-interface Props extends RouteComponentProps, FormComponentProps {}
+interface Props extends RouteComponentProps, FormComponentProps {
+}
 
-interface State {}
+interface State {
+}
 
-class Login extends Component<Props, State> {
+class SignUp extends Component<Props, State> {
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -22,7 +23,7 @@ class Login extends Component<Props, State> {
 
     submit = () => {
         this.props.form.validateFields(async (err, values) => {
-             await userStore.login(values.username, values.password)
+            console.log(values)
         })
     }
 
@@ -52,22 +53,13 @@ class Login extends Component<Props, State> {
                     )}
                 </Form.Item>
                 <Form.Item>
-                    {getFieldDecorator('remember', {
-                        valuePropName: 'checked',
-                        initialValue: true,
-                    })(<Checkbox>Remember me</Checkbox>)}
-                    <a className="login-form-forgot" href="">
-                        Forgot password
-                    </a>
-                    <br/>
                     <Button block type="primary" htmlType="submit" className="login-form-button" onClick={this.submit}>
-                        Log in
+                        register
                     </Button>
-                    Or <a href="/signup">register now!</a>
                 </Form.Item>
             </Form>
         );
     }
 }
 
-export default Form.create<Props>()(Login);
+export default Form.create<Props>()(SignUp);

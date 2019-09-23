@@ -1,11 +1,13 @@
-import { Layout, Icon, Row, Col, Avatar } from 'antd';
-import React, { Component } from "react";
+import {Layout, Icon, Row, Col, Avatar, Menu, Dropdown} from 'antd';
+import React, {Component} from "react";
 import "components/LayoutHeaderBaseAntd/index.less"
 
-const { Header } = Layout;
+const {Header} = Layout;
+const {SubMenu} = Menu;
 
 interface Props {
 }
+
 interface State {
     collapsed: boolean;
 }
@@ -22,13 +24,33 @@ export default class LayoutHeader extends Component<Props, State> {
     // };
 
     render() {
+        const menuHeaderDropdown = (
+            <Menu theme="dark">
+                <Menu.Item key="center">
+                    <Icon type="user"/>
+                </Menu.Item>
+                <Menu.Item key="settings">
+                    <Icon type="setting"/>
+                </Menu.Item>
+                <Menu.Item key="logout">
+                    <Icon type="logout"/>
+                </Menu.Item>
+            </Menu>
+        );
         return (
             <Header className="header-layout">
                 <Row>
-                    <Col className="header-layout-left" span={12} ><Icon type="menu-fold" /></Col>
+                    <Col className="header-layout-left" span={12}><Icon type="menu-fold"/></Col>
                     <Col className="header-layout-right" span={12}>
-                        <Avatar size="small" className="header-layout-avatar" icon="user" />
-                        <Icon className="header-layout-global" type="global" />
+                        <Dropdown overlay={menuHeaderDropdown}>
+                            <span className="action account">
+                                <Avatar size="small" className="avatar" icon="user"/>
+                                <span className="name">用户名</span>
+                            </span>
+                        </Dropdown>
+                        <Dropdown overlay={menuHeaderDropdown}>
+                            <Icon className="header-layout-global" type="global" />
+                        </Dropdown>
                     </Col>
                 </Row>
             </Header>
