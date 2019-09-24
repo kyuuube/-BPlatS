@@ -23,6 +23,15 @@ const initialData = {
     }[]
 };
 
+export interface UserItem {
+    id: string
+    userName: string
+    roleName: string
+    nickName: string
+    createdAt: number
+    status: number
+}
+
 class UserStore {
     @persist @observable token = "";
     /** 是否已登录 */

@@ -25,7 +25,7 @@ export default class LayoutHeader extends Component<Props, State> {
 
     render() {
         const menuHeaderDropdown = (
-            <Menu theme="dark">
+            <Menu>
                 <Menu.Item key="center">
                     <Icon type="user"/>
                 </Menu.Item>
@@ -42,6 +42,12 @@ export default class LayoutHeader extends Component<Props, State> {
                 <Row>
                     <Col className="header-layout-left" span={12}><Icon type="menu-fold"/></Col>
                     <Col className="header-layout-right" span={12}>
+                        <span className="action account">
+                            <Icon className="header-layout-global" type="question-circle" />
+                        </span>
+                        <span className="action account">
+                            <Icon className="header-layout-global" type="bell" />
+                        </span>
                         <Dropdown overlay={menuHeaderDropdown}>
                             <span className="action account">
                                 <Avatar size="small" className="avatar" icon="user"/>

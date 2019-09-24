@@ -3,46 +3,37 @@
 @global-header-prefix-cls: ~'@{ant-prefix}-pro-global-header ';
 
 @pro-header-bg: @component-background;
-@pro-header-hover-bg: @component-background;
+@pro-header-hover-bg: #000f1f;
 @pro-header-box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
 .header-layout {
-  //text-align: right;
+  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  //background: #ffffff;
   font-size: 20px;
+  height: 64px;
   color: #dddfe0;
+  margin-bottom: 1px;
   .header-layout-left {
     text-align: left;
     font-size: 20px;
     cursor: pointer;
   }
-  //.header-layout-right {
-  //  text-align: right;
-  //  .header-layout-avatar{
-  //    vertical-align: text-top;
-  //    cursor: pointer;
-  //    background-color: rgb(144, 160, 185);
-  //  }
-  //  .header-layout-global {
-  //    margin-left: 30px;
-  //    cursor: pointer;
-  //    font-size: 19px;
-  //  }
-  //}
-
   .header-layout-right {
     font-size: 14px;
     float: right;
     height: 100%;
     overflow: hidden;
     text-align: right;
+    color: #dddfe0;
     .action {
       display: inline-block;
       height: 100%;
       padding: 0 12px;
       cursor: pointer;
       transition: all 0.3s;
+      color: #dddfe0;
       > i {
-        color: @text-color;
+        color: #dddfe0;
         vertical-align: middle;
       }
       &:hover {
