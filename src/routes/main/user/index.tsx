@@ -1,14 +1,16 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import {RouteComponentProps} from "react-router";
-import {Table, Divider, Tag, Breadcrumb, Row, Select, Button, Form, Input, Typography} from 'antd';
+import {Table, Divider, Tag, Breadcrumb, Row, Select, Button, Form, Input, Typography, Alert, Col, Icon} from 'antd';
 import {FormComponentProps} from "antd/es/form";
 import {UserItem} from "../../../stores/userStore";
 
 const {Column} = Table;
 const {Option} = Select;
 const {Title} = Typography
+const FormItem = Form.Item;
 
 import "./index.less"
+import "../../../styles/form.less"
 
 interface Props extends RouteComponentProps, FormComponentProps {
 }
@@ -20,9 +22,46 @@ const data: UserItem[] = [];
 
 class User extends Component<Props, State> {
 
+    renderSimpleForm() {
+        const { form } = this.props;
+        const { getFieldDecorator } = form;
+        return (
+            <Form layout="inline">
+                <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
+                    <Col md={8} sm={24}>
+                        <FormItem label="关键字">
+                            {getFieldDecorator("keyword")(<Input placeholder="用户名、手机号、别名"/>)}
+                        </FormItem>
+                    </Col>
+                    <Col md={8} sm={24}>
+                        <FormItem label="使用状态">
+                            {getFieldDecorator("role")(<Select
+                                showSearch
+                                placeholder="选择角色"
+                                optionFilterProp="children"
+                            >
+                                <Option value="jack">Jack</Option>
+                                <Option value="lucy">Lucy</Option>
+                                <Option value="tom">Tom</Option>
+                            </Select>)}
+                        </FormItem>
+                    </Col>
+                    <Col md={8} sm={24}>
+            <span className="submitButtons">
+              <Button type="primary" htmlType="submit">
+                查询
+              </Button>
+              <Button style={{ marginLeft: 8 }} >
+                重置
+              </Button>
+            </span>
+                    </Col>
+                </Row>
+            </Form>
+        );
+    }
+
     render() {
-        const {form} = this.props;
-        const {getFieldDecorator} = form;
         return (
             <div className="user">
                 <div className="user-header">
@@ -31,37 +70,37 @@ class User extends Component<Props, State> {
                             <a href="/">Home</a>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item>
+                            用户管理
+                        </Breadcrumb.Item>
+                        <Breadcrumb.Item>
                             用户列表
                         </Breadcrumb.Item>
                     </Breadcrumb>
                     <Title className="title-text" level={4}>用户列表</Title>
                 </div>
                 <div className="user-content">
-                    <Row className="query">
-                        <Form layout="inline">
-                            <Form.Item label="关键字:">
-                                {getFieldDecorator("keyword")(<Input placeholder="用户名、手机号、别名"/>)}
-                            </Form.Item>
-                            <Form.Item label="角色:">
-                                {getFieldDecorator("role")(<Select
-                                    showSearch
-                                    style={{width: 200}}
-                                    placeholder="选择角色"
-                                    optionFilterProp="children"
-                                >
-                                    <Option value="jack">Jack</Option>
-                                    <Option value="lucy">Lucy</Option>
-                                    <Option value="tom">Tom</Option>
-                                </Select>)}
-                            </Form.Item>
-                            <Form.Item>
-                                <Button type="primary" icon="search">搜 索</Button>
-                            </Form.Item>
-                        </Form>
+                    <div className="query tableListForm">
+                        {this.renderSimpleForm()}
+                    </div>
+                    <Row className="list-operator">
+                        <Button type="primary" icon="plus">添 加</Button>
                     </Row>
-                    <Row>
-                        <Button type="primary" icon="search">添加</Button>
-                    </Row>
+
+                    <div className="list-operator">
+                        <Alert
+                            message={
+                                <Fragment>
+                                    已选择 <a style={{ fontWeight: 600 }}>1</a> 项
+                                    <a style={{ marginLeft: 24 }}>
+                                        清空
+                                    </a>
+                                </Fragment>
+                            }
+                            type="info"
+                            showIcon
+                        />
+                    </div>
+
                     <Table dataSource={data} className="table-list">
                         <Column title="账号" dataIndex="firstName" key="firstName"/>
                         <Column title="状态" dataIndex="firstName" key="firstName"/>
